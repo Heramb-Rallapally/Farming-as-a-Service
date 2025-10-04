@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import './FarmerHome.css';
 
 const FarmerHome = () => {
   const { t, i18n } = useTranslation();
   const { username } = useParams();
+  const navigate = useNavigate();
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -25,6 +26,10 @@ const FarmerHome = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+  };
+
+  const handleNavigation = (path) => {
+    navigate(path);
   };
 
   return (
@@ -104,16 +109,28 @@ const FarmerHome = () => {
           <div className="dashboard-card actions-card">
             <h3>{t('quick_actions')}</h3>
             <div className="action-buttons">
-              <button className="action-btn plant-btn">
+              <button 
+                className="action-btn plant-btn"
+                onClick={() => handleNavigation(`../${username}/Produce`)}
+              >
                 {t('plant_crops')}
               </button>
-              <button className="action-btn harvest-btn">
+              <button 
+                className="action-btn harvest-btn"
+                onClick={() => alert('Harvest feature coming soon!')}
+              >
                 {t('harvest')}
               </button>
-              <button className="action-btn water-btn">
+              <button 
+                className="action-btn water-btn"
+                onClick={() => alert('Irrigation feature coming soon!')}
+              >
                 {t('irrigation')}
               </button>
-              <button className="action-btn market-btn">
+              <button 
+                className="action-btn market-btn"
+                onClick={() => alert('Market prices feature coming soon!')}
+              >
                 {t('market_prices')}
               </button>
             </div>

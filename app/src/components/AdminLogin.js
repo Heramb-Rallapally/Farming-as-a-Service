@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './FarmerLogin.css';
+import './AdminLogin.css';
 
-const FarmerLogin = () => {
+const AdminLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -24,32 +24,23 @@ const FarmerLogin = () => {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/farmers/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+      // Simulate login delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setMessage(`✅ ${result.message} Redirecting...`);
-        console.log('Login successful:', result.farmer);
+      // Check hardcoded admin credentials
+      if (formData.username === 'admin' && formData.password === '1234') {
+        setMessage('✅ Admin login successful! Redirecting...');
+        console.log('Admin login successful');
         
-        // Store farmer data in localStorage
-        localStorage.setItem('farmerData', JSON.stringify(result.farmer));
-        
-        // Redirect to farmer home page with username
+        // Redirect to admin home page
         setTimeout(() => {
-          navigate(`/${result.farmer.username}`);
+          navigate('/AdminHome');
         }, 1500);
       } else {
-        setMessage(`❌ ${result.message}`);
+        setMessage('❌ Invalid admin credentials. Please try again.');
       }
     } catch (error) {
-      setMessage('❌ Network error. Please check if the server is running.');
+      setMessage('❌ Login failed. Please try again.');
       console.error('Error:', error);
     } finally {
       setLoading(false);
@@ -57,9 +48,13 @@ const FarmerLogin = () => {
   };
 
   return (
-    <div className="farmer-login-container">
+    <div className="admin-login-container">
       <div className="login-form">
-        <h2>Farmer Login</h2>
+        <div className="admin-header">
+          <div className="admin-icon">👨‍💼</div>
+          <h2>Admin Login</h2>
+          <p>FaaS Administration Portal</p>
+        </div>
         
         {message && (
           <div className={`message ${message.includes('✅') ? 'success' : 'error'}`}>
@@ -69,45 +64,47 @@ const FarmerLogin = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Admin Username:</label>
             <input
               type="text"
               id="username"
               name="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Enter your username"
+              placeholder="Enter admin username"
               required
               disabled={loading}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Admin Password:</label>
             <input
               type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
+              placeholder="Enter admin password"
               required
               disabled={loading}
             />
           </div>
 
-          <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? 'Logging In...' : 'Login'}
+          <button type="submit" className="admin-login-btn" disabled={loading}>
+            {loading ? 'Logging In...' : 'Login as Admin'}
           </button>
         </form>
 
         <div className="form-footer">
-          <p>Don't have an account? <a href="/farmer-signup">Sign up here</a></p>
-          <p><a href="#forgot-password">Forgot Password?</a></p>
+          <p><a href="/">← Back to Home</a></p>
+          <div className="admin-help">
+            <small>Need help? Contact system administrator</small>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default FarmerLogin;
+export default AdminLogin;

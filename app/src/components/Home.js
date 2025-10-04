@@ -12,7 +12,7 @@ const Home = () => {
           <span>Farming as a Service</span>
         </div>
         <div className="nav-links">
-          <Link to="/admin-login" className="nav-link">Admin Login</Link>
+          <Link to="/Adminlogin" className="nav-link">Admin Login</Link>
           <Link to="/FarmerSignup" className="nav-link">Farmer Signup</Link>
           <Link to="/FarmerLogin" className="nav-link">Farmer Login</Link>
         </div>

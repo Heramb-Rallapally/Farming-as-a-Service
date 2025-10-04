@@ -1,0 +1,256 @@
+.farmer-produce-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.produce-form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  border: 3px solid #4CAF50;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  color: #2E7D32;
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+}
+
+.form-header p {
+  color: #666;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.message.success {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border: 2px solid #4caf50;
+}
+
+.message.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 2px solid #f44336;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2E7D32;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+/* Profit Display */
+.profit-display {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  border: 2px solid #28a745;
+}
+
+.profit-display h3 {
+  color: #2E7D32;
+  margin: 0 0 1rem 0;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.profit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.profit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.profit-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.profit-value {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.profit-value.profit {
+  color: #28a745;
+}
+
+.profit-value.loss {
+  color: #dc3545;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Form Footer */
+.form-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.form-footer a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+  color: #2E7D32;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .farmer-produce-container {
+    padding: 1rem;
+  }
+
+  .produce-form {
+    padding: 2rem;
+    border-radius: 15px;
+  }
+
+  .form-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .profit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profit-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .submit-btn {
+    font-size: 1.1rem;
+  }
+}
+
+/* Input Number Styling */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Animation for form appearance */
+.produce-form {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

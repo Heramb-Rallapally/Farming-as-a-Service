@@ -1,8 +1,11 @@
 import React from 'react';
+import Home from './components/Home';
 import FarmerSignup from './components/FarmerSignup';
 import FarmerLogin from './components/FarmerLogin';
 import FarmerHome from './components/FarmerHome';
-import Home from './components/Home';
+import AdminLogin from './components/AdminLogin';
+import AdminHome from './components/AdminHome';
+import FarmerProduce from './components/FarmerProduce';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -15,11 +18,14 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route exact path="/Home" element={<Home />} />
-          <Route exact path="/FarmerSignup" element={<FarmerSignup />} />
-          <Route exact path="/FarmerLogin" element={<FarmerLogin/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/FarmerSignup" element={<FarmerSignup />} />
+          <Route path="/FarmerLogin" element={<FarmerLogin />} />
+          <Route path="/Adminlogin" element={<AdminLogin />} />
+          <Route path="/admin/home" element={<AdminHome />} />
+          <Route path="/:username/Produce" element={<FarmerProduce />} />
           <Route path="/:username" element={<FarmerHome />} />
-
         </Routes>
       </div>
     </Router>
