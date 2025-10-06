@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './FarmerProduce.css';
 
 const FarmerProduce = () => {
   const { username } = useParams();
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     farmerName: '',
     cropType: '',
@@ -18,6 +20,10 @@ const FarmerProduce = () => {
     'Rice', 'Wheat', 'Corn', 'Tomato', 'Potato', 'Onion', 
     'Cotton', 'Sugarcane', 'Soybean', 'Barley', 'Millet', 'Other'
   ];
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -79,7 +85,7 @@ const FarmerProduce = () => {
         setMessage(`❌ ${result.message}`);
       }
     } catch (error) {
-      setMessage('❌ Network error. Please check if the server is running.');
+      setMessage(`❌ ${t('network_error')}`);
       console.error('Error:', error);
     } finally {
       setLoading(false);
@@ -92,8 +98,25 @@ const FarmerProduce = () => {
     <div className="farmer-produce-container">
       <div className="produce-form">
         <div className="form-header">
-          <h2>🌾 Add Crop Produce</h2>
-          <p>Enter your crop details for better farm management</p>
+          <div className="header-top">
+            <h2>{t('add_crop_produce')}</h2>
+            <div className="language-switcher">
+              <span>{t('language')}: </span>
+              <button 
+                onClick={() => changeLanguage('en')} 
+                className={i18n.language === 'en' ? 'active' : ''}
+              >
+                English
+              </button>
+              <button 
+                onClick={() => changeLanguage('hi')} 
+                className={i18n.language === 'hi' ? 'active' : ''}
+              >
+                हिंदी
+              </button>
+            </div>
+          </div>
+          <p>{t('crop_details_subtitle')}</p>
         </div>
 
         {message && (
@@ -105,20 +128,20 @@ const FarmerProduce = () => {
         <form onSubmit={handleSubmit}>
           {/* Farmer Name */}
           <div className="form-group">
-            <label htmlFor="farmerName">Farmer Name:</label>
+            <label htmlFor="farmerName">{t('farmer_name')}</label>
             <input
               type="text"
               id="farmerName"
               name="farmerName"
               value={formData.farmerName}
               onChange={handleChange}
-              placeholder="Enter farmer name"
+              placeholder={t('farmer_name_placeholder')}
               required
               disabled={loading}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="cropType">Crop Type:</label>
+            <label htmlFor="cropType">{t('crop_type')}</label>
             <select
               id="cropType"
               name="cropType"
@@ -127,7 +150,7 @@ const FarmerProduce = () => {
               required
               disabled={loading}
             >
-              <option value="">Select crop type</option>
+              <option value="">{t('select_crop_type')}</option>
               {cropOptions.map((crop) => (
                 <option key={crop} value={crop}>
                   {crop}
@@ -138,14 +161,14 @@ const FarmerProduce = () => {
 
           {/* Crop Amount */}
           <div className="form-group">
-            <label htmlFor="cropAmount">Crop Amount (in Kg):</label>
+            <label htmlFor="cropAmount">{t('crop_amount')}</label>
             <input
               type="number"
               id="cropAmount"
               name="cropAmount"
               value={formData.cropAmount}
               onChange={handleChange}
-              placeholder="Enter amount in kilograms"
+              placeholder={t('crop_amount_placeholder')}
               min="0"
               step="0.01"
               required
@@ -155,14 +178,14 @@ const FarmerProduce = () => {
 
           {/* Cost Price */}
           <div className="form-group">
-            <label htmlFor="costPrice">Cost Price per Kg (₹):</label>
+            <label htmlFor="costPrice">{t('cost_price')}</label>
             <input
               type="number"
               id="costPrice"
               name="costPrice"
               value={formData.costPrice}
               onChange={handleChange}
-              placeholder="Enter cost price per kg"
+              placeholder={t('cost_price_placeholder')}
               min="0"
               step="0.01"
               required
@@ -172,14 +195,14 @@ const FarmerProduce = () => {
 
           {/* Sell Price */}
           <div className="form-group">
-            <label htmlFor="sellPrice">Selling Price per Kg (₹):</label>
+            <label htmlFor="sellPrice">{t('selling_price')}</label>
             <input
               type="number"
               id="sellPrice"
               name="sellPrice"
               value={formData.sellPrice}
               onChange={handleChange}
-              placeholder="Enter selling price per kg"
+              placeholder={t('selling_price_placeholder')}
               min="0"
               step="0.01"
               required
@@ -190,24 +213,24 @@ const FarmerProduce = () => {
           {/* Profit Calculation Display */}
           {profitData && (
             <div className="profit-display">
-              <h3>💰 Profit Analysis</h3>
+              <h3>{t('profit_analysis')}</h3>
               <div className="profit-grid">
                 <div className="profit-item">
-                  <span className="profit-label">Total Cost:</span>
+                  <span className="profit-label">{t('total_cost')}</span>
                   <span className="profit-value">₹{profitData.totalCost.toFixed(2)}</span>
                 </div>
                 <div className="profit-item">
-                  <span className="profit-label">Total Revenue:</span>
+                  <span className="profit-label">{t('total_revenue')}</span>
                   <span className="profit-value">₹{profitData.totalRevenue.toFixed(2)}</span>
                 </div>
                 <div className="profit-item">
-                  <span className="profit-label">Profit/Loss:</span>
+                  <span className="profit-label">{t('profit_loss')}</span>
                   <span className={`profit-value ${profitData.profit >= 0 ? 'profit' : 'loss'}`}>
                     ₹{profitData.profit.toFixed(2)}
                   </span>
                 </div>
                 <div className="profit-item">
-                  <span className="profit-label">Profit Margin:</span>
+                  <span className="profit-label">{t('profit_margin')}</span>
                   <span className={`profit-value ${profitData.profit >= 0 ? 'profit' : 'loss'}`}>
                     {profitData.profitPercentage}%
                   </span>
@@ -217,12 +240,12 @@ const FarmerProduce = () => {
           )}
 
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? 'Saving...' : 'Save Produce Details'}
+            {loading ? t('saving') : t('save_produce_details')}
           </button>
         </form>
 
         <div className="form-footer">
-          <p><a href={`/${username}`}>← Back to Dashboard</a></p>
+          <p><a href={`/${username}`}>{t('back_to_dashboard')}</a></p>
         </div>
       </div>
     </div>

@@ -50,7 +50,31 @@ const resources = {
       "ai_crop_analysis": "AI Crop Analysis",
       "mobile_monitoring": "Mobile Monitoring", 
       "precision_farming": "Precision Farming",
-      "yield_optimization": "Yield Optimization"
+      "yield_optimization": "Yield Optimization",
+      
+      // Farmer Produce Form
+      "add_crop_produce": "🌾 Add Crop Produce",
+      "crop_details_subtitle": "Enter your crop details for better farm management",
+      "farmer_name": "Farmer Name:",
+      "farmer_name_placeholder": "Enter farmer name",
+      "crop_type": "Crop Type:",
+      "select_crop_type": "Select crop type",
+      "crop_amount": "Crop Amount (in Kg):",
+      "crop_amount_placeholder": "Enter amount in kilograms",
+      "cost_price": "Cost Price per Kg (₹):",
+      "cost_price_placeholder": "Enter cost price per kg",
+      "selling_price": "Selling Price per Kg (₹):",
+      "selling_price_placeholder": "Enter selling price per kg",
+      "profit_analysis": "💰 Profit Analysis",
+      "total_cost": "Total Cost:",
+      "total_revenue": "Total Revenue:",
+      "profit_loss": "Profit/Loss:",
+      "profit_margin": "Profit Margin:",
+      "saving": "Saving...",
+      "save_produce_details": "Save Produce Details",
+      "back_to_dashboard": "← Back to Dashboard",
+      "network_error": "Network error. Please check if the server is running.",
+      "language": "Language"
     }
   },
   hi: {
@@ -101,7 +125,31 @@ const resources = {
       "ai_crop_analysis": "AI फसल विश्लेषण",
       "mobile_monitoring": "मोबाइल निगरानी",
       "precision_farming": "सटीक खेती",
-      "yield_optimization": "उत्पादन अनुकूलन"
+      "yield_optimization": "उत्पादन अनुकूलन",
+      
+      // Farmer Produce Form
+      "add_crop_produce": "🌾 फसल उत्पादन जोड़ें",
+      "crop_details_subtitle": "बेहतर खेत प्रबंधन के लिए अपनी फसल का विवरण दर्ज करें",
+      "farmer_name": "किसान का नाम:",
+      "farmer_name_placeholder": "किसान का नाम दर्ज करें",
+      "crop_type": "फसल का प्रकार:",
+      "select_crop_type": "फसल का प्रकार चुनें",
+      "crop_amount": "फसल की मात्रा (किलो में):",
+      "crop_amount_placeholder": "किलोग्राम में मात्रा दर्ज करें",
+      "cost_price": "लागत मूल्य प्रति किलो (₹):",
+      "cost_price_placeholder": "प्रति किलो लागत मूल्य दर्ज करें",
+      "selling_price": "विक्रय मूल्य प्रति किलो (₹):",
+      "selling_price_placeholder": "प्रति किलो विक्रय मूल्य दर्ज करें",
+      "profit_analysis": "💰 लाभ विश्लेषण",
+      "total_cost": "कुल लागत:",
+      "total_revenue": "कुल आय:",
+      "profit_loss": "लाभ/हानि:",
+      "profit_margin": "लाभ मार्जिन:",
+      "saving": "सहेज रहे हैं...",
+      "save_produce_details": "उत्पादन विवरण सहेजें",
+      "back_to_dashboard": "← डैशबोर्ड पर वापस",
+      "network_error": "नेटवर्क त्रुटि। कृपया जांचें कि सर्वर चल रहा है या नहीं।",
+      "language": "भाषा"
     }
   }
 };

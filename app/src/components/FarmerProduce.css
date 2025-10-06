@@ -22,10 +22,17 @@
   margin-bottom: 2rem;
 }
 
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .form-header h2 {
   color: #2E7D32;
   font-size: 2.2rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-weight: bold;
 }
 
@@ -33,6 +40,43 @@
   color: #666;
   margin: 0;
   font-size: 1.1rem;
+}
+
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-switcher span {
+  color: #2E7D32;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.language-switcher button {
+  padding: 0.5rem 1rem;
+  border: 2px solid #4CAF50;
+  background: white;
+  color: #4CAF50;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.language-switcher button:hover {
+  background: #4CAF50;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.language-switcher button.active {
+  background: #4CAF50;
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
 
 .message {
@@ -208,8 +252,23 @@
     border-radius: 15px;
   }
 
+  .header-top {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
   .form-header h2 {
     font-size: 1.8rem;
+  }
+
+  .language-switcher {
+    justify-content: center;
+  }
+
+  .language-switcher button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 
   .profit-grid {
